@@ -1,0 +1,9 @@
+--- 
+- name: Response to a webhook event 
+  hosts: localhost 
+  connection: local 
+
+  tasks: 
+    - name: Print message 
+      ansible.builtin.debug:
+        msg: "Hello, {{ ansible_eda.event.payload.name }}"
