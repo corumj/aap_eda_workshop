@@ -1,0 +1,15 @@
+---
+- name: Listen for OCP Virt Events
+  hosts: all
+  sources:
+    - sabre1041.eda.k8s:
+        api_version: kubevirt.io/v1
+        kind: VirtualMachine
+        api_key: "sha256~VTU-SCrkNKcwR5oZD3BrGm57VPr4YEefS1brU-Wgjrk" # "{{ ocp_api_token }}"
+        host: https://api.cluster-g7fq2.dynamic.redhatworkshops.io:6443
+        verify_ssl: false
+  rules:
+    - name: Print Event
+      condition: event.meta is defined
+      action:
+        debug:      
