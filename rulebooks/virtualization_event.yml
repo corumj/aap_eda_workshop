@@ -20,7 +20,7 @@
       condition: event.resource.status.printableStatus == "Running"
       action:
         run_job_template:
-          name: "OCP Virt - Event - VM Running" 
+          name: "[OCP Virt] VM Running" 
           organization: Default
 
     - name: Alert when Terminated 
