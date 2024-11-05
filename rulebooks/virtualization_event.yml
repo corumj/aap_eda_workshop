@@ -21,6 +21,7 @@
       action:
         run_job_template:
           name: "OCP Virt - Event - VM Running" 
+          organization: Default
 
     - name: Alert when Terminated 
       condition: event.resource.status.printableStatus == "Terminating"
