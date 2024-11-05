@@ -19,8 +19,8 @@
     - name: Alert when Running 
       condition: event.resource.status.printableStatus == "Running"
       action:
-        debug: 
-          msg: "{{ event.resource.metadata.name }} is now Running"
+        run_job_template:
+          name: "OCP Virt - Event - VM Running" 
 
     - name: Alert when Terminated 
       condition: event.resource.status.printableStatus == "Terminating"
