@@ -1,0 +1,8 @@
+--- 
+- name: Actions for OCP Virt VM Running Event 
+  hosts: "{{ target | default('localhost') }}"
+
+  tasks:
+    - name: Print out event details 
+      ansible.builtin.debug:
+        var: ansible_eda 

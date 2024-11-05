@@ -21,3 +21,9 @@
       action:
         debug: 
           msg: "{{ event.resource.metadata.name }} is now Running"
+
+    - name: Alert when Terminated 
+      condition: event.resource.status.printableStatus == "Terminating"
+      action:
+        debug: 
+          msg: "{{ event.resource.metadata.name }} is terminating"
