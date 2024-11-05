@@ -1,6 +1,6 @@
 --- 
 - name: Actions for OCP Virt VM Running Event 
-  hosts: "{{ ansible_eda.event.resource.metadata.name | default('localhost') }}"
+  hosts: "{{ ansible_eda.event.resource.metadata.name }}-{{ ansible_eda.event.resource.metadata.name | default('localhost') }}"
   gather_facts: no 
 
   tasks:
