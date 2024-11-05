@@ -10,19 +10,19 @@
         verify_ssl: false
   rules:
 
-    - name: Alert when {{ event.resource.metadata.name }} Created 
+    - name: Alert when Created 
       condition: event.resource.status.printableStatus == "Provisioning" 
       action:
         debug:  
           msg: "{{ event.resource.metadata.name }} Created"
 
-    - name: Alert when {{ event.resource.metadata.name }} Running 
+    - name: Alert when Running 
       condition: event.resource.status.printableStatus == "Running"
       action:
         run_job_template:
           name: "OCP Virt - Event - VM Running" 
 
-    - name: Alert when {{ event.resource.metadata.name }} Terminated 
+    - name: Alert when Terminated 
       condition: event.resource.status.printableStatus == "Terminating"
       action:
         debug: 
