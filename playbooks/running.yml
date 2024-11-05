@@ -1,12 +1,9 @@
 --- 
 - name: Actions for OCP Virt VM Running Event 
-  hosts: "{{ ansible_eda.event.resource.metadata.namespace }}-{{ ansible_eda.event.resource.metadata.name | default('localhost') }}"
+  hosts: "{{ target | default('localhost') }}"
   gather_facts: no 
 
   tasks:
     - name: Print out event details 
       ansible.builtin.debug:
         var: ansible_eda 
-
-    - name: Test connection to VM 
-      ansible.builtin.ping:
