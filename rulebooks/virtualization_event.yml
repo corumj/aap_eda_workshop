@@ -9,12 +9,7 @@
         host: "{{ ocp_api_endpoint }}"
         verify_ssl: false
   rules:
-    - name: Print Event
-      condition: event.meta is defined
-      action:
-        debug:      
-          var: event 
-          
+
     - name: Alert when Created 
       condition: event.resource.status.printableStatus == "Provisioning" 
       action:
