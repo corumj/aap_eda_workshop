@@ -13,3 +13,16 @@
       condition: event.meta is defined
       action:
         debug:      
+          var: event 
+          
+    - name: Alert when Created 
+      condition: event.resource.status.printableStatus == "Provisioning" 
+      action:
+        debug:  
+          msg: "{{ event.resource.metadata.name }} Created"
+
+    - name: Alert when Running 
+      condition: event.resource.status.printableStatus == "Running"
+      action:
+        debug: 
+          msg: "{{ event.resource.metadata.name }} is now Running"
