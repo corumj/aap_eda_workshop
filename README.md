@@ -10,7 +10,7 @@
   - VS Code 
     - Red Hat Ansible extension 
   - ansible-core 2.14+ 
-  - ansible-builder 3.1.0 or greater or pull a prebuild Decision Env
+  - ansible-builder 3.1.0 or greater or pull a prebuilt Decision Env (only needed for k8s exercises, not done yet)
   - rulebook-server, ~~EDA Controller~~, or AAP 2.5 w/ access to Automation Decisions 
 
 
@@ -22,11 +22,13 @@ this should work to start a quick example:
 
 `ansible-rulebook --rulebook rulebooks/webhook.yml -i inventory --verbose`
 
+You won't see any output - just a blinking cursor, it's ready and listening for an event.
+
 ### Testing a webhook activation w/ curl 
 
 We can test the example webhook by running this command:
 
-`curl -H 'Content-Type: application/json' -d "{\"name\": \"Jerry\"}" http://localhost:5005/endpoint`
+`curl -H 'Content-Type: application/json' -d "{\"name\": \"Roccannon\"}" http://localhost:5005/endpoint`
 
 I find it easier to edit a JSON file in VS Code versus trying to escape json on the command line, 
 so I'll usually create a json file with the payload and use a command like this to load the body 
