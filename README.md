@@ -43,7 +43,7 @@ Let's look at an easy way to print an event out so we can understand how EDA wil
 
 `ansible-rulebook --rulebook rulebooks/print_event.yml -i inventory --verbose`
 
-Simulate an event and take a look at the payload.  Try the other payloads in the 
+Simulate an event again, and take a look at the payload.  Try the other payloads in the 
 event_payloads directory.
 
 ### Adding some webhook security by modifying your rulebook 
@@ -58,6 +58,7 @@ Test with curl and provide the token you set in the rulebook:
 `curl -H 'Content-Type: application/json' -H 'Authorization: Bearer pizzaislife' -d @event_payloads/name.json http://localhost:5005/endpoint`
 
 ## Todo
+- [] Find more event_source examples to feed via curl 
 - [] Add building a custom Decision Environment to include k8s source 
 - [] Build the Exercise steps for eventing with k8s source (what should that even be?  I like the Create Project -> have AAP apply resourceLimits, but is that realistic?)
 
