@@ -10,7 +10,8 @@
   - VS Code 
     - Red Hat Ansible extension 
   - ansible-core 2.14+ 
-  - rulebook-server, EDA Controller, or AAP 2.5 w/ access to Automation Decisions 
+  - ansible-builder 3.1.0 or greater or pull a prebuild Decision Env
+  - rulebook-server, ~~EDA Controller~~, or AAP 2.5 w/ access to Automation Decisions 
 
 
 ## Running a rulebook activation w/ ansible-rulebook 
@@ -28,16 +29,15 @@ We can test the example webhook by running this command:
 `curl -H 'Content-Type: application/json' -d "{\"name\": \"Jerry\"}" http://localhost:5005/endpoint`
 
 I find it easier to edit a JSON file in VS Code versus trying to escape json on the command line, 
-so I'll usually create a json file with the payload and use a command like this to load that body 
-from the file:
+so I'll usually create a json file with the payload and use a command like this to load the body 
+from a file:
 
 `curl -H 'Content-Type: application/json' -d @event_payloads/name.json http://localhost:5005/endpoint`
 
 The '@' is what tells curl to read the data from a file so we don't have to escape things.
 
 ## Time to get real 
-Let's look at an easy way to print an event out so we can understand how 
-EDA will navigate through it.  Run the `print_event.yml` rulebook.  
+Let's look at an easy way to print an event out so we can understand how EDA will navigate through it.  Run the `print_event.yml` rulebook.  
 
 `ansible-rulebook --rulebook rulebooks/print_event.yml -i inventory --verbose`
 
@@ -55,6 +55,9 @@ Test with curl and provide the token you set in the rulebook:
 
 `curl -H 'Content-Type: application/json' -H 'Authorization: Bearer pizzaislife' -d @event_payloads/name.json http://localhost:5005/endpoint`
 
+## Todo
+- [] Add building a custom Decision Environment to include k8s source 
+- [] Build the Exercise steps for eventing with k8s source (what should that even be?  I like the Create Project -> have AAP apply resourceLimits, but is that realistic?)
 
 
 
